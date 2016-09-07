@@ -10,16 +10,20 @@ public class Baseball {
 	Scanner scan = new Scanner(System.in);
 	
 	public static void main (String[] args) {
-		int atBases = 0;
-		float safeHits = 0;
-		float totalBases = 0;
+
 		Scanner scan = new Scanner(System.in);
 		int countForPlayerCycle = theNumberOfPlayers();
 		
+		Player theChosenPlayer = new Player();
+
+		
 		for (int x = 0; x < countForPlayerCycle; x++) {
-			Player theChosenPlayer = new Player();
+			int atBases = 0;
+			float safeHits = 0;
+			float totalBases = 0;
 			System.out.println("What is the name of the player?");
 			theChosenPlayer.setName(scan.nextLine());
+			
 			System.out.println("Please enter the total number of at-bats the player has taken");
 			int numberOfAtBats = scan.nextInt();
 			int i = 0;
@@ -29,6 +33,7 @@ public class Baseball {
 				numberOfAtBats = scan.nextInt();
 				i++;
 			}
+			
 			System.out.println("The number of bases must be a positive integer 0 to 4");
 			for (int j = 1; j <= numberOfAtBats; j++) {
 				System.out.println("At-bat number " + j);
@@ -45,7 +50,6 @@ public class Baseball {
 				if (atBases > 0) {
 					safeHits++;
 				}
-
 			} // end of for loop
 
 		//	sluggingAverage(totalBases, numberOfAtBats);
@@ -53,8 +57,9 @@ public class Baseball {
 		//	battingAverage(safeHits, numberOfAtBats);
 			theChosenPlayer.setBattingAverage(battingAverage(safeHits, numberOfAtBats));
 			System.out.println(theChosenPlayer.toString());
+			scan.nextLine();
 			System.out.println("\n");
-		}
+		}  // end of outer for loop
 		
 		
 	}   // end of method main
